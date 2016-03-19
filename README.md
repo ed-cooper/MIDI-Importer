@@ -24,6 +24,19 @@ up, blocking the application.
 If this happens, you need to click on 'More info' and
 select 'Run anyway'
 
+## Using the program
+
+Click load and find the .mid file you want to import
+into Scratch.
+
+Then, for each of the tracks, select which Scratch voice
+you want to use for it by clicking on the dropdown. You
+can also mute tracks by clicking on the 'mute' checkbox.
+
+If you wish to not save the drum beat, you can uncheck
+the tick box for 'Import drum beat'. This is recommended
+if your midi file does not have any drum beat.
+
 ## Where will my files be stored
 
 When you save an extracted midi file, the data will be
