@@ -1,6 +1,6 @@
 # MIDI-Importer
 Converts *.mid files into Scratch readable data
-For use with (this project)[https://scratch.mit.edu/projects/101508699/]
+For use with this project: https://scratch.mit.edu/projects/101508699/
 
 ## Requirements
 This project requires the Microsoft.NET Framework v4.0 to be installed on your computer.
