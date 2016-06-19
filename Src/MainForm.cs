@@ -8,17 +8,30 @@ namespace MIDI_Importer
 {
     public partial class MainForm : Form
     {
+        /// <summary>
         /// The name used for saving the converted data.
+        /// </summary>
         string saveName = "Data";
+        /// <summary>
         /// The open midi file.
+        /// </summary>
         MidiFile midi;
+        /// <summary>
         /// The list of channels within the midi file. (0 - 16, excluding drum tracks)
+        /// </summary>
         List<int> Channels = new List<int>();
+        /// <summary>
         /// The list of notes within the midi file.
+        /// </summary>
         List<NoteOnEvent> Notes = new List<NoteOnEvent>();
+        /// <summary>
         /// The list of tempo changes within the midi file.
+        /// </summary>
         List<TempoEvent> TempoChanges = new List<TempoEvent>();
+
+        /// <summary>
         /// The list of instruments supported by Scratch.
+        /// </summary>
         string[] ScratchVoices = new string[21] {"Piano",
                                                  "Electric Piano",
                                                  "Organ",
@@ -41,13 +54,17 @@ namespace MIDI_Importer
                                                  "Synth Lead",
                                                  "Synth Pad"};
 
+        /// <summary>
         /// Initialises the form.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
         /// Occurs when the load button is clicked.
+        /// </summary>
         private void BtnLoad_Click(object sender, EventArgs e)
         {
             // Create and display dialog
@@ -61,7 +78,9 @@ namespace MIDI_Importer
             }
         }
 
+        /// <summary>
         /// Loads the notes and tempo changes from the specified midi file.
+        /// </summary>
         /// <param name="file">The file path of the midi file to upload.</param>
         void LoadMidi(string file)
         {
@@ -148,13 +167,17 @@ namespace MIDI_Importer
             Notes.Sort((x, y) => x.AbsoluteTime.CompareTo(y.AbsoluteTime));
         }
 
+        /// <summary>
         /// Occurs when the save button is clicked.
+        /// </summary>
         private void BtnSave_Click(object sender, EventArgs e)
         {
             processAndSave();
         }
 
+        /// <summary>
         /// Processes and saves the midi data.
+        /// </summary>
         void processAndSave()
         {
             // Current time in beats of the current note
@@ -293,7 +316,9 @@ namespace MIDI_Importer
             SaveFile(dir + "Bar Tempo.txt", BarTempo);
         }
 
+        /// <summary>
         /// Saves the specified data to the specified file.
+        /// </summary>
         /// <param name="path">The file path to save to.</param>
         /// <param name="data">The list containing the data to save.</param>
         private void SaveFile(string path, List<string> data)
