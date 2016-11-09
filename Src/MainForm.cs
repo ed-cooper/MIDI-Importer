@@ -1,4 +1,4 @@
-﻿using NAudio.Midi;
+using NAudio.Midi;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -268,7 +268,7 @@ namespace MIDI_Importer
 
                     // Add data
                     DrumsStart.Add(Math.Round(currentTime % 4, 2).ToString());
-                    DrumsDrum.Add(ScratchDrum(ne.NoteNumber).ToString());
+                    DrumsDrum.Add(ne.NoteNumber.ToString());
                     DrumsDuration.Add(Math.Round(ne.NoteLength / (double)midi.DeltaTicksPerQuarterNote, 2).ToString());
                     DrumsVolume.Add(Math.Round(ne.Velocity / (double)127 * 100, 2).ToString());
                 }
@@ -314,66 +314,6 @@ namespace MIDI_Importer
 
             // Save bar tempos
             SaveFile(dir + "Bar Tempo.txt", BarTempo);
-        }
-
-        /// <summary>
-        /// Returns the Scratch drum equivalent for the specified midi drum. -1 indicates no equivalent.
-        /// </summary>
-        /// <param name="midiDrum">The midi drum note to find the equivalent of.</param>
-        /// <returns>The Scratch drum equivalent for the specified midi drum. -1 indicates no equivalent.</returns>
-        private int ScratchDrum(int midiDrum)
-        {
-            switch (midiDrum)
-            {
-                case 35: return 2;  // Acoustic Bass Drum -> Bass Drum
-                case 36: return 2;  // Bass Drum 1        -> Bass Drum
-                case 37: return 3;  // Side Stick         -> Side Stick
-                case 38: return 1;  // Acoustic Snare     -> Snare Drum
-                case 39: return 8;  // Hand Clap          -> Hand Clap
-                case 40: return 1;  // Electric Snare     -> Snare Drum
-                case 41: return -1; // Low Floor Tom      -> Unknown
-                case 42: return 6;  // Closed Hi-Hat      -> Closed Hi-Hat
-                case 43: return -1; // High Floor Tom     -> Unknown
-                case 44: return 5;  // Pedal Hi-Hat       -> Open Hi-Hat
-                case 45: return -1; // Low Tom            -> Unknown
-                case 46: return 5;  // Open Hi-Hat        -> Open Hi-Hat
-                case 47: return -1; // Low-Mid Tom        -> Unknown
-                case 48: return -1; // Hi-Mid Tom         -> Unknown
-                case 49: return 4;  // Crash Cymbal 1     -> Crash Cymbal
-                case 50: return -1; // High Tom           -> Unknown
-                case 51: return 4;  // Ride Cymbal 1      -> Crash Cymbal
-                case 52: return 4;  // Chinese Cymbal     -> Crash Cymbal
-                case 53: return -1; // Ride Bell          -> Unknown
-                case 54: return 7;  // Tambourine         -> Tambourine
-                case 55: return 4;  // Splash Cymbal      -> Crash Cymbal
-                case 56: return 11; // Cowbell            -> Cowbell
-                case 57: return 4;  // Crash Cymbal 2     -> Crash Cymbal
-                case 58: return 17; // Vibraslap          -> Vibraslap
-                case 59: return 4;  // Ride Cymbal 2      -> Crash Cymbal
-                case 60: return 13; // Hi Bongo           -> Bongo
-                case 61: return 13; // Low Bongo          -> Bongo
-                case 62: return -1; // Mute Hi Conga      -> Unknown
-                case 63: return -1; // Open Hi Conga      -> Unknown
-                case 64: return -1; // Low Conga          -> Unknown
-                case 65: return -1; // High Timbale       -> Unknown
-                case 66: return -1; // Low Timbale        -> Unknown
-                case 67: return -1; // High Agogo         -> Unknown
-                case 68: return -1; // Low Agogo          -> Unknown
-                case 69: return 15; // Cabasa             -> Cabasa
-                case 70: return -1; // Maracas            -> Unknown
-                case 71: return -1; // Short Whistle      -> Unknown
-                case 72: return -1; // Long Whistle       -> Unknown
-                case 73: return 16; // Short Guiro        -> Guiro
-                case 74: return 16; // Long Guiro         -> Guiro
-                case 75: return 9;  // Claves             -> Claves
-                case 76: return 10; // Hi Wood Block      -> Wood Block
-                case 77: return 10; // Low Wood Block     -> Wood Block
-                case 78: return 18; // Mute Cuica         -> Open Cuica
-                case 79: return 18; // Open Cuica         -> Open Cuica
-                case 80: return 12; // Mute Triangle      -> Triangle
-                case 81: return 12; // Open Triangle      -> Triangle
-                default: return -1; // Unknown            -> Unknown
-            }
         }
 
         /// <summary>
